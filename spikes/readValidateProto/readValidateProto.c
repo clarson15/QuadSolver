@@ -10,7 +10,7 @@
  * the validate function we need into one function. I'll have to look into 
  * this later. Also, this only works on the basis that the input will not
  * be in scientific notation. Also signicant unit testing still needs to
- * be implemented.
+ * be implemented
  */
 int readLine(int n, char * buf)
 {
