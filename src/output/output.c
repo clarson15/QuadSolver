@@ -1,7 +1,7 @@
 //dummy file to test makefiles
 #include <stdio.h>
 
-int read_line(){
+int output(){
 	int a = 2;
 	a++;
 	return 0;
