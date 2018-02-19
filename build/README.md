@@ -1,0 +1,1 @@
+The build directory contains the compiled object files and the current application progress of the QuadSolver. To build the QuadSolver, run make build inside the src folder of this project. To clean up, run make clean. To test each submodule with the included unit tests, run make rtest. 
