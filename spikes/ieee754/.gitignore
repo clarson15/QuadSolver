@@ -1,5 +1,7 @@
-parts
-shift
-float_properties
-is_float
-is_normalized
+#Ignore everything
+*
+
+#except..
+!.gitignore
+!*.c
+!README.md
