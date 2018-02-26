@@ -9,3 +9,6 @@ rootfinder.c: Takes a,b, and c from quadratic equation and finds roots x1 and x2
 
 float_parts:
 float_parts.c: Takes a single precision float input (does not validate) and returns the sign bit, exponent, and mantissa in hexidecimal.
+
+ieee754:
+A bunch of floating point tests.
