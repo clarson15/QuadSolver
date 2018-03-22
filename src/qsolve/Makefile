@@ -5,13 +5,13 @@ rtest: test
 	./test
 
 test: test.o qsolve.o
-	${CC} ${CFLAGS} -o test test.o qsolve.o
+	${CC} ${CFLAGS} -o test test.o qsolve.o -lm
 
 test.o:
 	${CC} ${CFLAGS} -c test.c
 
 qsolve.o:
-	${CC} ${CFLAGS} -c qsolve.c
+	${CC} ${CFLAGS} -c qsolve.c -lm
 
 clean:
 	rm -rf test *.o core

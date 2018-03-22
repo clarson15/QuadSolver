@@ -13,7 +13,7 @@ build: main.o
 	cd output;\
 	make build
 	cd ../build;\
-	${CC} ${CFLAGS} -o quadsolver validate.o readline.o qsolve.o foutput.o main.o
+	${CC} ${CFLAGS} -o quadsolver validate.o readline.o qsolve.o foutput.o main.o -lm
 
 main.o:
 	${CC} ${CFLAGS} -c main.c

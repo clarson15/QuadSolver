@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+int qsolve(float a, float b, float c, float* x1, float* x2);
+
 int qsolve(float a, float b, float c, float* x1, float* x2)
 {
 	int ret = 1;
@@ -21,9 +23,4 @@ int qsolve(float a, float b, float c, float* x1, float* x2)
 		ret = 0;
 	}
 	return ret;
-}
-
-int main()
-{
-	return 0;
 }
