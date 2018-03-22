@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+int validate(char* str, float* a, float *b, float *c);
 /*
 Return code:
 flip the appropriate bit depending on properties of each float:
