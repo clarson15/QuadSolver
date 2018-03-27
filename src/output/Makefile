@@ -4,17 +4,17 @@ CFLAGS = -Wall -Werror -pedantic -std=c99
 rtest: test
 	./test
 
-test: test.o output.o
-	${CC} ${CFLAGS} -o test test.o output.o
+test: test.o foutput.o
+	${CC} ${CFLAGS} -o test test.o foutput.o
 
 test.o:
 	${CC} ${CFLAGS} -c test.c
 
-output.o:
-	${CC} ${CFLAGS} -c output.c
+foutput.o:
+	${CC} ${CFLAGS} -c foutput.c
 
 clean:
 	rm -rf test *.o core
 
-build: output.o
-	cp output.o ../../build
+build: foutput.o
+	cp foutput.o ../../build

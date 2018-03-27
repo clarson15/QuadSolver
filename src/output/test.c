@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-int main(int argc, char* argv[]){
+extern int foutput(char* buf, int stream);
 
+int main(int argc, char* argv[]){
+	foutput("Test123", 1);
 	return 0;
 }

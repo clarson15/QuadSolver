@@ -12,3 +12,5 @@ float_parts.c: Takes a single precision float input (does not validate) and retu
 
 ieee754:
 A bunch of floating point tests.
+
+readValidateProto: Simulates how readline and validate could work together.
