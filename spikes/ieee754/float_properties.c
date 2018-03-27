@@ -2,7 +2,11 @@
 #include <math.h>
 #include <stdlib.h>
 
+
+// Takes the return value from fpclassify and converts it into a string that can be printed.
 char *get_fp_classification (int classnum) {
+	// Create the classification table. Note that this implementation may 
+	// change depending on platform depending on the #DEFINEs used for FP_INFINITE, etc.
 	char *class[6];
 
 	class[FP_INFINITE] = "Infinite";

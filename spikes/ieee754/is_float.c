@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+// source: 
 char is_float (const char *s, float *dest) {
 	if (s == NULL) return 0;
 	
