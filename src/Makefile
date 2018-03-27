@@ -28,7 +28,7 @@ rtest:
 	cd output;\
 	make
 
-run:
+run: build
 	../build/quadsolver
 
 clean:
