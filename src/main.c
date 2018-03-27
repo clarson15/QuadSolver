@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 //Prototypes for functions to add in link stage
 extern int readline(int n, char* buf);
@@ -16,6 +17,7 @@ int main(int argc, char* argv[]){
 	ret = validate(buffer, &a, &b, &c);
 	ret = qsolve(a, b, c, &x1, &x2);
 	//todo: output info to buffer before foutput call
+	sprintf(buffer, "x1 = %f, x2 = %f\n", x1, x2);
 	ret = foutput(buffer, STDOUT_FILENO);
 	return ret;
 }
