@@ -28,6 +28,9 @@ rtest:
 	cd output;\
 	make
 
+run:
+	../build/quadsolver
+
 clean:
 	cd readline;\
 	make clean
