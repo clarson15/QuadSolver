@@ -14,7 +14,7 @@ foutput.o:
 	${CC} ${CFLAGS} -c foutput.c
 
 clean:
-	rm -rf test *.o core
+	rm -rf test *.o core logfile
 
 build: foutput.o
 	cp foutput.o ../../build

@@ -14,7 +14,7 @@ readline.o:
 	${CC} ${CFLAGS} -c readline.c
 
 clean:
-	rm -rf test *.o core
+	rm -rf test *.o core logfile
 
 build: readline.o
 	cp readline.o ../../build

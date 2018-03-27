@@ -5,7 +5,7 @@ rtest: test
 	./test
 
 test: test.o qsolve.o
-	${CC} ${CFLAGS} -o test test.o qsolve.o 
+	${CC} ${CFLAGS} -o test test.o qsolve.o -lm
 
 test.o:
 	${CC} ${CFLAGS} -c test.c
@@ -14,7 +14,7 @@ qsolve.o:
 	${CC} ${CFLAGS} -c qsolve.c 
 
 clean:
-	rm -rf test *.o core
+	rm -rf test *.o core logfile
 
 build: qsolve.o
 	cp qsolve.o ../../build

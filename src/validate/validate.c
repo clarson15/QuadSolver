@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int validate(char* str, float* a, float *b, float *c);
+FILE* logfile;
 /*
 Return code:
 flip the appropriate bit depending on properties of each float:
@@ -18,6 +19,10 @@ a and b are normal but c is infinite:
 */
 
 int validate(char* str, float* a, float *b, float *c){
+	if((logfile = fopen("logfile", "a+")) == NULL)
+		fprintf(stderr, "Failed to open log file, continuing.");
+	else
+		fprintf(logfile, "validate:\nstr = %s\n", str);
 	int ret = 0, aclassify, bclassify, cclassify;
 	sscanf(str, "%f %f %f", a, b, c);
 	aclassify = fpclassify(*a);
@@ -79,6 +84,11 @@ int validate(char* str, float* a, float *b, float *c){
 		break;
 	default:
 		break;
+	}
+	if(logfile != NULL){
+		fprintf(logfile, "a = %f. b = %f. c = %f.\nExiting validate\n", *a, *b, *c);
+		fflush(logfile);
+		fclose(logfile);
 	}
 	return ret;
 }

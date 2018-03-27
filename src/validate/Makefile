@@ -14,7 +14,7 @@ validate.o:
 	${CC} ${CFLAGS} -c validate.c
 
 clean:
-	rm -rf test *.o core
+	rm -rf test *.o core logfile
 
 build: validate.o
 	cp validate.o ../../build

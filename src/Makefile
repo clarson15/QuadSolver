@@ -41,5 +41,5 @@ clean:
 	cd output;\
 	make clean
 	cd ../build;\
-	rm -rf quadsolver *.o core
-	rm -rf *.o core
+	rm -rf quadsolver *.o core logfile
+	rm -rf *.o core 
