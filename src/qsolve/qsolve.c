@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include "qsolve.h"
 
-int qsolve(float a, float b, float c, float* x1, float* x2);
 FILE* logfile;
 
 int qsolve(float a, float b, float c, float* x1, float* x2)
