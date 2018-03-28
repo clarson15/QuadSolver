@@ -1,30 +1,60 @@
+#include <CUnit/Basic.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+#include "validate.h"
 
-extern int validate(char*, float*, float*, float*);
-/*
-Return code for validate:
-flip the appropriate bit depending on properties of each float:
-(a - b - c respectively, assuming 32-bit integers but also works on 16-bit)
-00000000000000000[Normal][Denormal][Infinite][[NaN][Zero]
-Examples:
-a, b, c are all non-zero normalized floats:
-00 000 000 000 000 000 111 000 000 000 000
-a and b are zero:
-00 000 000 000 000 000 000 000 000 000 110
-a and b are normal but c is infinite:
-00 000 000 000 000 000 110 000 001 000 000
-*/
+int init_suite(void) { return 0; }
+int clean_suite(void) { return 0; }
+void validation_test (void);
+void validation_test_zero (void);
 
+int main (void) {
+	// Initialize CUnit
+	CU_pSuite pSuite = NULL;
+	if (CUE_SUCCESS != CU_initialize_registry() ) {
+		return CU_get_error();
+	}
 
-int main(int argc, char* argv[]){
+	// Create a test suite
+	pSuite = CU_add_suite("validate", init_suite, clean_suite);
+	if (pSuite == NULL) {
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// Add the tests.
+	if ((CU_add_test(pSuite, "validation_test", validation_test) == NULL)
+			| (CU_add_test(pSuite, "validation_test_zero", validation_test_zero) == NULL)) {
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	CU_basic_set_mode(CU_BRM_VERBOSE);
+	CU_basic_run_tests();
+	puts("");
+}
+
+void validation_test (void) {
+	int success = 16384 | 8192 | 4096;
+	char *str = "104.68 08.36 2e2";
 	float a, b, c;
-	int ret = 0;
-	char str[80];
-	sprintf(str, "01.2352 218.320 4238.302");
-	ret = validate(str, &a, &b, &c);
-	printf("%d: %s: %f %f %f\n", ret, str, a, b, c);
-	sprintf(str, "102.202 -2320.002 10283.20");
-	ret = validate(str, &a, &b, &c);
-	printf("%d: %s: %f %f %f\n", ret, str, a, b, c);
-	return 0;
+	int ret = validate(str, &a, &b, &c);
+
+	CU_ASSERT_EQUAL(a, 104.68f);
+	CU_ASSERT_EQUAL(b, 8.36f);
+	CU_ASSERT_EQUAL(c, 200.0f);
+	CU_ASSERT_EQUAL(ret, success);
+}
+
+void validation_test_zero (void) {
+	int success = 4 | 2 | 4096;
+	char *str = "0 0.00 1.2e3";
+	float a, b, c;
+	int ret = validate(str, &a, &b, &c);
+
+	CU_ASSERT_EQUAL(a, 0.0f);
+	CU_ASSERT_EQUAL(b, 0.0f);
+	CU_ASSERT_EQUAL(c, 1200.0f);
+	CU_ASSERT_EQUAL(ret, success);
 }

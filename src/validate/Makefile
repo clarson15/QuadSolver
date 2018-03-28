@@ -5,7 +5,7 @@ rtest: test
 	./test
 
 test: test.o validate.o
-	${CC} ${CFLAGS} -o test test.o validate.o
+	${CC} ${CFLAGS} -o test test.o validate.o -lcunit
 
 test.o: 
 	${CC} ${CFLAGS} -c test.c

@@ -34,7 +34,7 @@ int main (void) {
 }
 
 void readline_test (void) {
-	FILE *file = fopen("dummy", "r");
+	FILE *file = fopen("testfile", "r");
 	char buf[250], buf2[250];
 	readline(file, 250, buf);
 	CU_ASSERT_EQUAL(strcmp(buf, "hello"), 0);
