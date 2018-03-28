@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "foutput.h"
 
-int foutput(char* buf, int stream);
 FILE* logfile;
 
 int foutput(char* buf, int stream){
