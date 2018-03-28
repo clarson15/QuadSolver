@@ -5,5 +5,8 @@ CS4910 demo project
 
 ## Running tests
 You will need to install CUnit (the library) on your system somehow.
-Ubuntu: `sudo apt-get install libcunit1 libcunit1-dev`
+
+Ubuntu: `sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev`
+
 Mac: `brew install cunit`
+
