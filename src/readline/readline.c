@@ -1,20 +1,21 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
+#include "readline.h"
 
-int readline(int n, char* buf);
 FILE* logfile;
 /*
 currently this function only returns 0 (no errors) but err is reserved for any errors.
 */
-int readline(int n, char* buf)
+int readline(FILE *stream, int n, char* buf)
 {
 	int err = 0, amt_read = 0;
 	if((logfile = fopen("logfile", "a+")) == NULL)
 		fprintf(stderr, "Failed to open log file, continuing.");
 	else
 		fprintf(logfile, "readline:\nn = %d\n", n);
-	amt_read = read(STDIN_FILENO, buf, n); //read n characters from stdin
+	amt_read = strlen(fgets(buf, n, stream)); //read n characters from stdin
 	if(amt_read-1 > 0)
 		buf[amt_read-1] = 0; //null terminator
 	

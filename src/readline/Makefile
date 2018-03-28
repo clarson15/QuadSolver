@@ -5,7 +5,7 @@ rtest: test
 	./test
 
 test: test.o readline.o
-	${CC} ${CFLAGS} -o test test.o readline.o
+	${CC} ${CFLAGS} -o test test.o readline.o -lcunit
 
 test.o:
 	${CC} ${CFLAGS} -c test.c
