@@ -17,53 +17,67 @@ int main(int argc, char* argv[]){
 	ret = validate(buffer, &a, &b, &c);
 	//check the fp_classify values
 	if((ret & 256) == 256){
-		printf("Error: Value A is infinite. Exiting.\n");
+		sprintf(buffer, "Error: Value A is infinite. Exiting.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	else if((ret & 32) == 32){
-		printf("Error: Value A is NaN. Exiting.\n");
+		sprintf(buffer, "Error: Value A is NaN. Exiting.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	else if((ret & 2056) == 2056){
-		printf("Warning: Value A is denormalized. This could lead to loss of precision.\n");
+		sprintf(buffer, "Warning: Value A is denormalized. This could lead to loss of precision.");
+		foutput(buffer, STDOUT_FILENO);
 	}
 	else if((ret & 4) == 4){
-		printf("Warning: Value A is zero, so function isn't exponential.\n");
+		sprintf(buffer, "Warning: Value A is zero, so function isn't exponential.");
+		foutput(buffer, STDOUT_FILENO);
 		if((ret & 8192) == 8192){
 			x1 = -c/b;
-			printf("x = %f\n", x1);
+			sprintf(buffer, "x = %f", x1);
+			foutput(buffer, STDOUT_FILENO);
 		}
 		else
-			printf("Error: Value B is invalid so there is no solution.\n");
+			sprintf("Error: Value B is invalid so there is no solution.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	if((ret & 128) == 128){
-		printf("Error: Value B is infinite. Exiting.\n");
+		sprintf(buffer, "Error: Value B is infinite. Exiting.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	else if((ret & 16) == 16){
-		printf("Error: Value B is NaN. Exiting.\n");
+		sprintf(buffer, "Error: Value B is NaN. Exiting.\n");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	else if((ret & 1024) == 1024){
-		printf("Warning: Value B is denormalized. This could lead to loss of precision.\n");
+		sprintf(buffer, "Warning: Value B is denormalized. This could lead to loss of precision.");
+		foutput(buffer, STDOUT_FILENO);
 	}
 	else if((ret & 2) == 2){
-		printf("Warning: Value B is zero.\n");
+		sprintf(buffer, "Warning: Value B is zero.");
+		foutput(buffer, STDOUT_FILENO);
 	}
 	if((ret & 64) == 64){
-		printf("Error: Value C is infinite. Exiting.\n");
+		sprintf(buffer, "Error: Value C is infinite. Exiting.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}	
 	else if((ret & 8) == 8){
-		printf("Error: Value C is NaN. Exiting.\n");
+		sprintf(buffer, "Error: Value C is NaN. Exiting.");
+		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
 	else if((ret & 512) == 512){
-		printf("Warning: Value C is denormalized. This could lead to loss of precision.\n");
+		sprintf(buffer, "Warning: Value C is denormalized. This could lead to loss of precision.");
+		foutput(buffer, STDOUT_FILENO);
 	}
 	else if((ret & 1) == 1){
-		printf("Warning: Value C is zero.\n");
+		sprintf(buffer, "Warning: Value C is zero.");
+		foutput(buffer, STDOUT_FILENO);
 	}
 	ret = qsolve(a, b, c, &x1, &x2);
 	if(ret == 0){
