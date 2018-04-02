@@ -10,10 +10,12 @@ int qsolve(float a, float b, float c, float* x1, float* x2)
 		fprintf(stderr, "Failed to open log file, continuing.");
 	else
 		fprintf(logfile, "qsolve:\na = %f b = %f c = %f\n", a, b, c);
-	int ret = 1;
+	int ret = 0;
 	float d = b * b - 4 * a * c;
-
-	if(d > 0)
+	if((fpclassify(d) == FP_INFINITE) || (fpclassify(d) == FP_NAN)){
+		ret = 1; //if determinant is infinite or NaN, stop computing.
+	}
+	else if(d > 0)
 	{
 		*x1 = (-b + sqrt(d)) / (2 * a);
 		*x2 = (-b - sqrt(d)) / (2 * a);
@@ -23,12 +25,19 @@ int qsolve(float a, float b, float c, float* x1, float* x2)
 		*x1 = -b / (2 * a);
 		*x2 = *x1;
 	}
-	else
-	{
-		ret = 0;
+	else{
+		ret = 8;
+	}
+	if(ret == 0){
+		if((fpclassify(*x1) == FP_INFINITE) || (fpclassify(*x1) == FP_NAN)){
+			ret |= 2;
+		}
+		if((fpclassify(*x2) == FP_INFINITE) || (fpclassify(*x2) == FP_NAN)){
+			ret |= 4;
+		}
 	}
 	if(logfile != NULL){
-		fprintf(logfile, "x1 = %f. x2 = %f. determinant = %f.\nExiting validate\n", *x1, *x2, d);
+		fprintf(logfile, "x1 = %f. x2 = %f. determinant = %f. ret = %d\nExiting validate\n", *x1, *x2, d, ret);
 		fflush(logfile);
 		fclose(logfile);
 	}
