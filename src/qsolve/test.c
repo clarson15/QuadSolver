@@ -42,7 +42,7 @@ void qsolve_test_pos_dis (void) {
 
 	CU_ASSERT_EQUAL(x1, -2.0f);
 	CU_ASSERT_EQUAL(x2, -8.0f);
-	CU_ASSERT_EQUAL(ret, 1);
+	CU_ASSERT_EQUAL(ret, 0);
 }
 
 void qsolve_test_zero_dis (void) {
@@ -52,7 +52,7 @@ void qsolve_test_zero_dis (void) {
 
 	CU_ASSERT_EQUAL(x1, -1.0f);
 	CU_ASSERT_EQUAL(x2, -1.0f);
-	CU_ASSERT_EQUAL(ret, 1);
+	CU_ASSERT_EQUAL(ret, 0);
 }
 
 void qsolve_test_neg_dis (void) {
@@ -60,5 +60,5 @@ void qsolve_test_neg_dis (void) {
 	float a = 2.0f, b=2.0f, c = 1.0f;
 	int ret = qsolve(a, b, c, &x1, &x2);
 
-	CU_ASSERT_EQUAL(ret, 0);
+	CU_ASSERT_EQUAL(ret, 8);
 }

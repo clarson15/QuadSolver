@@ -5,7 +5,7 @@ rtest: test
 	./test
 
 test: test.o qsolve.o
-	${CC} ${CFLAGS} -o test test.o qsolve.o -lcunit
+	${CC} ${CFLAGS} -o test test.o qsolve.o -lm -lcunit
 
 test.o:
 	${CC} ${CFLAGS} -c test.c

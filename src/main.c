@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 			foutput(buffer, STDOUT_FILENO);
 		}
 		else
-			sprintf("Error: Value B is invalid so there is no solution.");
+			sprintf(buffer, "Error: Value B is invalid so there is no solution.");
 		foutput(buffer, STDOUT_FILENO);
 		return 1;
 	}
