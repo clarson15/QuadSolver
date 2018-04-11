@@ -19,7 +19,7 @@ int qsolve(float a, float b, float c, float* x1, float* x2)
 	else{
 		d = b * b - 4 * a * c;
 		if((fpclassify(d) == FP_INFINITE) || (fpclassify(d) == FP_NAN)){
-			ret = 1; //if determinant is infinite or NaN, stop computing.
+			ret = 1; //if discriminant is infinite or NaN, stop computing.
 		}
 		else if(d > 0)
 		{
@@ -44,7 +44,7 @@ int qsolve(float a, float b, float c, float* x1, float* x2)
 		}
 	}
 	if(logfile != NULL){
-		fprintf(logfile, "x1 = %f. x2 = %f. determinant = %f. ret = %d\nExiting validate\n", *x1, *x2, d, ret);
+		fprintf(logfile, "x1 = %f. x2 = %f. discriminant = %f. ret = %d\nExiting validate\n", *x1, *x2, d, ret);
 		fflush(logfile);
 		fclose(logfile);
 	}

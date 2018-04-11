@@ -85,7 +85,7 @@ int main(int argc, char* argv[]){
 		ret = foutput(buffer, STDOUT_FILENO);
 	}
 	else if(ret == 1){
-		sprintf(buffer, "Invalid determinant while computing solutions.");
+		sprintf(buffer, "Invalid discriminant while computing solutions.");
 		ret = foutput(buffer, STDOUT_FILENO);
 	}
 	else if((ret & 0x6) != 0){
@@ -93,7 +93,7 @@ int main(int argc, char* argv[]){
 		ret = foutput(buffer, STDOUT_FILENO);
 	}
 	else if(ret == 8){
-		sprintf(buffer, "Error: negative determinant. Complex solutions.");
+		sprintf(buffer, "Error: negative discriminant. Complex solutions.");
 		ret = foutput(buffer, STDOUT_FILENO);
 	}
 	else{
