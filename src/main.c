@@ -10,7 +10,7 @@ extern int foutput(char* buf, int stream);
 
 int main(int argc, char* argv[]){
 	char buffer[120];
-	float a = 0.0f, b = 0.0f, c = 0.0f, x1 = 0.0f, x2 = 0.0f;
+	float a = 0.0f, b = 0.0f, c = 0.0f, x1 = 0.0f, x2 = 0.0f; 
 	int ret = 0;
 	puts("Please input coefficients seperated by spaces:");
 	ret = readline(stdin, 120, buffer);
